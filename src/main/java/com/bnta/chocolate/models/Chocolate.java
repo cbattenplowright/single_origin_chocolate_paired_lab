@@ -31,6 +31,8 @@ public class Chocolate {
     public Chocolate() {
     }
 
+
+//    Getters and Setters
     public Long getId() {
         return id;
     }

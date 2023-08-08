@@ -33,6 +33,8 @@ public class Estate {
     public Estate() {
     }
 
+
+//    Getters and Setters
     public String getCountry() {
         return country;
     }
