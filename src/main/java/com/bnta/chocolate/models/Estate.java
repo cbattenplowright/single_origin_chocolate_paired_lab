@@ -20,8 +20,8 @@ public class Estate {
     @Column
     private String country;
 
-    @OneToMany(mappedBy = "chocolate")
-    @JsonIgnoreProperties({"chocolate"})
+    @OneToMany(mappedBy = "estate")
+    @JsonIgnoreProperties({"estate"})
     private List<Chocolate> chocolates;
 
     public Estate(String name, String country) {
