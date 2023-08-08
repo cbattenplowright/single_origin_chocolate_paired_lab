@@ -16,6 +16,7 @@ public class Chocolate {
     private int cocoaPercentage;
 
     @ManyToOne
+    @JoinColumn(name = "estate_id")
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {
