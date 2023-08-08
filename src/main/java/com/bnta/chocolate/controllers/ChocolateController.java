@@ -17,9 +17,16 @@ public class ChocolateController {
     ChocolateService chocolateService;
 
     @GetMapping
-    public ResponseEntity<List<Chocolate>> getAllChocolates(){
+    public ResponseEntity<List<Chocolate>> getAllChocolates(@RequestParam Optional<Integer> percentage) {
+
         List<Chocolate> chocolates;
-        chocolates = chocolateService.getAllChocolates();
+
+        if (percentage.isPresent()) {
+            chocolates = chocolateService.findChocolateByPercentage(percentage.get());
+        } else {
+            chocolates = chocolateService.getAllChocolates();
+        }
+
         return new ResponseEntity<>(chocolates, HttpStatus.OK);
     }
 
