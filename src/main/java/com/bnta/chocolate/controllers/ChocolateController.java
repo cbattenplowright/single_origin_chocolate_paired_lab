@@ -1,8 +1,10 @@
 package com.bnta.chocolate.controllers;
 
 import com.bnta.chocolate.models.Chocolate;
+import com.bnta.chocolate.models.ChocolateDTO;
 import com.bnta.chocolate.services.ChocolateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +34,9 @@ public class ChocolateController {
 
     @GetMapping("/{Id}")
     public ResponseEntity<Chocolate> getChocolateById(@PathVariable int Id) { // Path Variable must match the route mapping
+
         Optional<Chocolate> chocolate = chocolateService.getChocolateById((long) Id);
+
         if (chocolate.isPresent()) {
             return new ResponseEntity<>(chocolate.get(), HttpStatus.OK);
         } else {
@@ -40,5 +44,10 @@ public class ChocolateController {
         }
     }
 
-
+//    Create a way to create a chocolate object specifying only the estate id
+    @PostMapping
+    public ResponseEntity<Chocolate> newChocolate(@RequestBody ChocolateDTO chocolateDTO){
+        Chocolate newChocolate = chocolateService.saveChocolate(chocolateDTO);
+        return new ResponseEntity<>(newChocolate, HttpStatus.CREATED);
+    }
 }

@@ -1,6 +1,7 @@
 package com.bnta.chocolate.services;
 
 import com.bnta.chocolate.models.Chocolate;
+import com.bnta.chocolate.models.ChocolateDTO;
 import com.bnta.chocolate.repositories.ChocolateRepository;
 import com.bnta.chocolate.repositories.EstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class ChocolateService {
     EstateRepository estateRepository;
 
 
-    public Chocolate saveChocolate(Chocolate chocolate){
-        return chocolateRepository.save(chocolate);
+    public Chocolate saveChocolate(ChocolateDTO chocolateDTO){
+        return chocolateRepository.save(chocolateDTO.returnChocolate());
     }
 
     public List<Chocolate> getAllChocolates(){

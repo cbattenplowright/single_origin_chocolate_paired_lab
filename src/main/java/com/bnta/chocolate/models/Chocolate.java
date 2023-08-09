@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-@Entity(name = "chocolates")
+@Entity
+@Table(name = "chocolates")
 public class Chocolate {
 
     @Id
@@ -18,7 +19,7 @@ public class Chocolate {
     private int cocoaPercentage;
 
     @ManyToOne
-    @JoinColumn(name = "estate_id")
+    @JoinColumn(name = "estate_id", nullable = false)
     @JsonIgnoreProperties({"chocolates"})
     private Estate estate;
 
@@ -32,7 +33,7 @@ public class Chocolate {
     }
 
 
-//    Getters and Setters
+    //    Getters and Setters
     public Long getId() {
         return id;
     }
